@@ -75,3 +75,6 @@
     background-color: #eee;
   }
   
+  #focus:focus{
+    outline: 2px solid black;
+  }

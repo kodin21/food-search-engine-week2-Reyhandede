@@ -18,19 +18,24 @@ fetch("https://jsonplaceholder.typicode.com/users/1").then(
 
     function foodCreate(foodList)
     {
-
+     let i=0;
       let card=document.querySelector("#card");
       
         foodList.forEach(element => {
+          i++;
           
           let cardDiv=document.createElement("li");
+       
+          
           let cardLi=document.createElement("a");
           cardDiv.appendChild(cardLi)
           card.appendChild(cardDiv)
+          
 
-          cardLi.innerHTML=` <i onclick="Favorite(this)" class="fa fa-thumbs-up" style="float:left ;color:#222;"></i> <strong>${element.title}</strong>  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          cardLi.innerHTML=` <div id="focus" tabIndex="${i}" name="box"><i onclick="Favorite(this)" class="fa fa-thumbs-up"  style="float:left ;color:#222;"></i> <strong>${element.title}</strong>  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
          <br>
+         </div>
 
           `;
 
@@ -52,8 +57,25 @@ fetch("https://jsonplaceholder.typicode.com/users/1").then(
 
 //Favori butonu
     
-    function Favorite(x) {
-      x.classList.toggle("fa-thumbs-down");
+    function Favorite(icon) {
+      icon.classList.toggle("fa-thumbs-down");
+
     }
 
-   
+
+ 
+ //Kartların isimlerine tıklayınca odaklanıp border oluşuyor.
+    let boxes = document.getElementsByName("box");
+
+    boxes.forEach((box)=>{
+      // Click Events
+      box.addEventListener("click",(event)=>{
+         // Focus on the exact box   
+         box.focus();
+        
+      });
+      
+  
+     
+    });
+    
