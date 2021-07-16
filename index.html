@@ -5,9 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+   
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    KODUNUZU BURAYA YAZABILIRSINIZ
+    
+    
+
+    <div id="user"style="color:#E18728;font-size:40px; padding: auto;margin-bottom:10%;"></div>  
+
+    
+
+<form class="searchform group">
+    
+  <label for="search-box">
+    <span class="fa fa-2x fa-search"></span>
+  </label>
+  
+  <input type="search" id="search-box"  onkeyup="cardFunction()"placeholder="Search">
+
+  
+</form>
+</div>
+
+
+
+<div id="card">
+
+
+
+</div>
+    
+
+
     <script src="index.js"></script>
+
+    <script>
+      function cardFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("search-box");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("card");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+      }
+      </script>
+
+
 </body>
 </html>
